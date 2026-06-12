@@ -1,10 +1,4 @@
-Here is the fully updated code for your website.
-
-Every instance of your old company name has been replaced. I have also updated the logo placeholders to reflect the new **C&K** identity, making the entire site look like a premium, integrated engineering firm.
-
-### **The Updated Code (`index.html`)**
-
-```html
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
