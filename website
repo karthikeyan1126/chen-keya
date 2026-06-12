@@ -1,0 +1,326 @@
+Here is the fully updated code for your website.
+
+Every instance of your old company name has been replaced. I have also updated the logo placeholders to reflect the new **C&K** identity, making the entire site look like a premium, integrated engineering firm.
+
+### **The Updated Code (`index.html`)**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chen & Keya - Integrated Services and Production LLP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-navy: #0a192f;
+            --accent-cyan: #00bcd4;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --text-dark: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        
+        /* --- HEADER --- */
+        header {
+            background: var(--primary-navy);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-container img {
+            height: 50px; 
+            width: auto;
+        }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: var(--white); text-decoration: none; transition: 0.3s; font-weight: 500; }
+        nav a:hover { color: var(--accent-cyan); }
+
+        /* --- HOME HERO SECTION --- */
+        #home {
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Left Alignment */
+            padding-left: 10%;
+            color: var(--white);
+        }
+        #home h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; max-width: 800px; line-height: 1.2;}
+        #home h2 { font-size: 1.5rem; color: var(--accent-cyan); font-weight: 300; }
+
+        /* --- GENERAL SECTION STYLES --- */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; font-size: 2.2rem; color: var(--primary-navy); margin-bottom: 50px; }
+        
+        /* --- ABOUT US (Split Layout) --- */
+        #about { background: var(--white); }
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text { text-align: right; font-size: 1.1rem; } /* Right Alignment */
+        .about-image img { border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* --- EXPERTS (Split Layout Reversed) --- */
+        #experts { background: var(--light-gray); }
+        .experts-text { text-align: left; font-size: 1.1rem; } /* Left Alignment */
+        
+        /* --- SERVICES (Cards with Images) --- */
+        #services { background: var(--white); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom: 3px solid var(--accent-cyan);}
+        .service-img { height: 180px; width: 100%; object-fit: cover; background: #ddd; }
+        .service-info { padding: 20px; }
+        .service-info h3 { color: var(--primary-navy); margin-bottom: 10px; }
+
+        /* --- EXCLUSIVES (Future Plans) --- */
+        #exclusives { background: var(--primary-navy); color: var(--white); text-align: center; }
+        #exclusives .section-title { color: var(--white); }
+        .exclusive-content { max-width: 800px; margin: 0 auto; font-size: 1.2rem; }
+
+        /* --- LATEST UPDATES (Carousel) --- */
+        #updates { background: var(--light-gray); }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+        .update-card {
+            min-width: 300px;
+            background: var(--white);
+            border-radius: 8px;
+            scroll-snap-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .update-img { height: 150px; width: 100%; background: #ccc; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;}
+        .update-info { padding: 15px; }
+
+        /* --- FOUNDATIONS (Team) --- */
+        #foundations { background: var(--white); }
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .team-member { text-align: center; width: 250px; }
+        .member-photo {
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--accent-cyan);
+            background: #eee;
+        }
+        .role { color: var(--accent-cyan); font-weight: bold; margin-bottom: 5px; }
+
+        /* --- FOOTER --- */
+        footer { background: #050e1a; color: #ccc; text-align: center; padding: 50px 10% 30px; }
+        .social-links { margin-bottom: 20px; }
+        .social-links a { color: var(--white); font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
+        .social-links a:hover { color: var(--accent-cyan); }
+        .tagline { color: var(--accent-cyan); font-style: italic; font-size: 1.1rem; }
+        .copyright { font-size: 0.8rem; margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;}
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .split-layout { grid-template-columns: 1fr; text-align: center; }
+            .about-text, .experts-text { text-align: center; }
+            .about-image { order: -1; margin-bottom: 20px; } /* Image on top for mobile */
+            #home { padding-left: 5%; align-items: center; text-align: center; }
+            #home h1 { font-size: 2.2rem; }
+            nav ul { display: none; } /* Hide menu on mobile for simplicity */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://placehold.co/250x60/0a192f/00bcd4?text=C%26K+INTEGRATED" alt="Chen & Keya Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Mission</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#updates">Updates</a></li>
+                <li><a href="#foundations">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>CHEN & KEYA - INTEGRATED SERVICES AND PRODUCTION</h1>
+        <h2>Evolving Safety. Ensuring Value</h2>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="split-layout">
+            <div class="about-image">
+                <img src="https://placehold.co/600x400?text=Image:+Engineer+at+Work" alt="Engineer working on RAMS">
+            </div>
+            <div class="about-text">
+                <p>At Chen & Keya, our mission is to deliver RAM (Reliability, Availability and Maintainability) and Safety assistance in terms of preparation and/or independent review of essential documentation to the customer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experts">
+        <h2 class="section-title">Your partners in RAM and Safety support</h2>
+        <div class="split-layout">
+            <div class="experts-text">
+                <p>We have a highly skilled team with strong expertise in supporting customers throughout the development of rail products and projects. From the initial planning phase through to the Defects Liability Period (DLP), our team provides comprehensive assistance in the preparation and independent review of RAM (Reliability, Availability, Maintainability) and Safety deliverables, ensuring compliance, quality, and project success.</p>
+            </div>
+            <div class="experts-image">
+                <img src="https://placehold.co/600x400?text=Image:+Engineering+Team" alt="Team meeting">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Services by Chen & Keya</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://placehold.co/400x200?text=Reliability+Prediction" class="service-img" alt="Prediction">
+                <div class="service-info">
+                    <h3>Reliability Prediction</h3>
+                    <p>MTBF calculations using MIL-HDBK-217 & Telcordia standards.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/400x200?text=Reliability+Modeling" class="service-img" alt="Modeling">
+                <div class="service-info">
+                    <h3>Reliability Modeling</h3>
+                    <p>RBD (Reliability Block Diagrams) and Fault Tree Analysis simulations.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/400x200?text=FMECA" class="service-img" alt="FMECA">
+                <div class="service-info">
+                    <h3>FMECA</h3>
+                    <p>Failure Mode, Effects, and Criticality Analysis for risk mitigation.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/400x200?text=Reliability+Analysis" class="service-img" alt="Analysis">
+                <div class="service-info">
+                    <h3>Reliability Analysis</h3>
+                    <p>Data-driven lifecycle analysis for maintenance optimization.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/400x200?text=Safety+Analyses" class="service-img" alt="Safety">
+                <div class="service-info">
+                    <h3>Safety Analyses</h3>
+                    <p>Hazard Logs, Risk Assessments, and SIL (Safety Integrity Level) studies.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/400x200?text=Safety+Assessment" class="service-img" alt="Assessment">
+                <div class="service-info">
+                    <h3>Safety Assessment</h3>
+                    <p>Independent Safety Assessment (ISA) support and Safety Case preparation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="exclusives">
+        <h2 class="section-title">Discover our future plans</h2>
+        <div class="exclusive-content">
+            <p>As part of our growth strategy, Chen & Keya is preparing to enter the manufacturing sector. In future, we are going to research and design proprietary energy units aimed at decentralized power generation. Our objective is to transition from service assurance to product creation, delivering innovative solutions that maximize energy utilization and cost-efficiency for our end-users.</p>
+        </div>
+    </section>
+
+    <section id="updates">
+        <h2 class="section-title">Latest Updates</h2>
+        <div class="carousel-container">
+            <div class="update-card">
+                <img src="https://placehold.co/300x150?text=Company+Launch" class="update-img" alt="Launch">
+                <div class="update-info">
+                    <h3>Company Launch</h3>
+                    <p>Chen & Keya Integrated Services and Production LLP registration initiated.</p>
+                </div>
+            </div>
+            <div class="update-card">
+                <img src="https://placehold.co/300x150?text=Project+Win" class="update-img" alt="Project">
+                <div class="update-info">
+                    <h3>Metro Project Win</h3>
+                    <p>Awarded Reliability Modeling contract for upcoming rail infrastructure.</p>
+                </div>
+            </div>
+            <div class="update-card">
+                <img src="https://placehold.co/300x150?text=We+are+Hiring" class="update-img" alt="Hiring">
+                <div class="update-info">
+                    <h3>We are Hiring</h3>
+                    <p>Looking for skilled RAMS Engineers to join our growing team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="foundations">
+        <h2 class="section-title">Chen & Keya Foundations</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://placehold.co/200x200?text=Founder" class="member-photo" alt="Founder">
+                <h3>[Name Here]</h3>
+                <p class="role">Founder</p>
+                <p>Visionary leader driving the evolution of rail safety.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://placehold.co/200x200?text=CEO" class="member-photo" alt="CEO">
+                <h3>[Name Here]</h3>
+                <p class="role">CEO</p>
+                <p>Steering global operations and strategic growth.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://placehold.co/200x200?text=CTO" class="member-photo" alt="CTO">
+                <h3>[Name Here]</h3>
+                <p class="role">CTO</p>
+                <p>Architecting the future of RAMS and energy technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="tagline">"Together let's build safer and dependable railway"</p>
+        <p class="copyright">&copy; 2026 Chen & Keya Integrated Services and Production LLP. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
